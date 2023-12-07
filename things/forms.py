@@ -1,4 +1,3 @@
-# things/forms.py
 from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator
 from .models import Thing
@@ -14,4 +13,5 @@ class ThingForm(forms.ModelForm):
         'quantity': forms.NumberInput(),
     }
 
+    description = forms.CharField(widget=forms.Textarea(attrs={'maxlength': '120'}))
     quantity = forms.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
